@@ -50,7 +50,7 @@ Param (
 
 Try {
 	## Set the script execution policy for this process
-	Try { Set-ExecutionPolicy -ExecutionPolicy 'ByPass' -Scope 'Process' -Force -ErrorAction 'Stop' } Catch {}
+	Try { Set-ExecutionPolicy -ExecutionPolicy 'ByPass' -Scope 'Process' -Force -ErrorAction 'Stop' } Catch { Write-Error "Failed to set the execution policy to Bypass for this process." }
 
 	##*===============================================
 	##* VARIABLE DECLARATION
@@ -76,10 +76,10 @@ Try {
 	## Variables: Exit Code
 	[int32]$mainExitCode = 0
 
-	## Variables: Script
+## Variables: Script
 	[string]$deployAppScriptFriendlyName = 'Deploy Application'
-	[version]$deployAppScriptVersion = [version]'3.6.9'
-	[string]$deployAppScriptDate = '02/12/2017'
+	[version]$deployAppScriptVersion = [version]'3.7.0'
+	[string]$deployAppScriptDate = '02/13/2018'
 	[hashtable]$deployAppScriptParameters = $psBoundParameters
 
 	## Variables: Environment
@@ -119,6 +119,8 @@ Try {
 
 		## <Perform Pre-Installation tasks here>
 		New-Folder -Path "$envCommonStartMenuPrograms\Banner Apps" -ContinueOnError $true
+
+		New-Folder -Path "C:\TEMP" -ContinueOnError $true
 
 		##*===============================================
 		##* INSTALLATION
