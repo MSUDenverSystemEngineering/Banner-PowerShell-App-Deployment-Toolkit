@@ -126,7 +126,6 @@ Try {
 		Show-InstallationProgress
 
 		## <Perform Pre-Installation tasks here>
-		
 		Remove-File -Path "$envCommonStartMenuPrograms\Banner Apps\*.lnk" -ContinueOnError $true
 
 		New-Folder -Path "$envCommonStartMenuPrograms\Banner Apps" -ContinueOnError $true
