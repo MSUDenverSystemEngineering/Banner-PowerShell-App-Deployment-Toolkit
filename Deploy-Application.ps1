@@ -119,12 +119,16 @@ Try {
 		[string]$installPhase = 'Pre-Installation'
 
 		## Show Welcome Message, close Internet Explorer if needed, verify there is enough disk space to complete the install, and persist the prompt
+
 		Show-InstallationWelcome -CloseApps 'iexplore' -CheckDiskSpace -PersistPrompt
 
 		## Show Progress Message (with the default message)
 		Show-InstallationProgress
 
 		## <Perform Pre-Installation tasks here>
+		
+		Remove-File -Path "$envCommonStartMenuPrograms\Banner Apps\*.lnk" -ContinueOnError $true
+
 		New-Folder -Path "$envCommonStartMenuPrograms\Banner Apps" -ContinueOnError $true
 
 		New-Folder -Path "C:\TEMP" -ContinueOnError $true
