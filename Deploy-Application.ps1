@@ -122,7 +122,7 @@ Try {
 
 		## <Perform Pre-Installation tasks here>
 
-		Remove-Folder -Path "$envCommonStartMenuPrograms\Banner Apps"
+		Remove-Folder -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Banner Apps"
 
 		New-Folder -Path "$envCommonStartMenuPrograms\Banner Apps"
 
