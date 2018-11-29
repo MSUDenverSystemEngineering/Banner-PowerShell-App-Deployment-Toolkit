@@ -122,9 +122,9 @@ Try {
 
 		## <Perform Pre-Installation tasks here>
 
-		Remove-Folder -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Banner Apps"
+		##Remove-Folder -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Banner Apps"
 
-		New-Folder -Path "$envCommonStartMenuPrograms\Banner Apps"
+		##New-Folder -Path "$envCommonStartMenuPrograms\Banner Apps"
 
 		##*===============================================
 		##* INSTALLATION
@@ -138,7 +138,7 @@ Try {
 		}
 
 		## <Perform Installation tasks here>
-		Copy-File -Path "$dirSupportFiles\*.lnk" -Destination "$envCommonStartMenuPrograms\Banner Apps"
+		If (Test-Path -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Banner Apps") Copy-File -Path "$dirSupportFiles\*.lnk" -Destination "$envCommonStartMenuPrograms\Banner Apps"
 
 		##*===============================================
 		##* POST-INSTALLATION
