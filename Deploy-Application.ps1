@@ -115,7 +115,7 @@ Try {
 		[string]$installPhase = 'Pre-Installation'
 
 		## Show Welcome Message, close Internet Explorer, verify there is enough disk space to complete the install, and persist the prompt
-		Show-InstallationWelcome -CloseApps 'iexplore' -CheckDiskSpace -PersistPrompt
+		Show-InstallationWelcome -CheckDiskSpace -PersistPrompt
 
 		## Show Progress Message (with the default message)
 		Show-InstallationProgress
@@ -138,7 +138,8 @@ Try {
 		}
 
 		## <Perform Installation tasks here>
-		If (Test-Path -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Banner Apps") Copy-File -Path "$dirSupportFiles\*.lnk" -Destination "$envCommonStartMenuPrograms\Banner Apps"
+		If (Test-Path -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Banner Apps") { Copy-File -Path "$dirSupportFiles\*.lnk" -Destination "$envCommonStartMenuPrograms\Banner Apps"
+        }
 
 		##*===============================================
 		##* POST-INSTALLATION
